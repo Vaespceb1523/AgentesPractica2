@@ -31,17 +31,17 @@
 
 //TEAM_ALLIED
 
-+flag (F): team(100)
++flag (F): team(100) 
   <-
-  +punto([20,0,180]);
-  .goto([20,0,180]).
-+target_reached(T): team(100)
-  <-
-  -punto([20,0,180]);
+  +target([200,0,10]);
+  .goto([200,0,10]). 
+
++target_reached(T): team(100) 
+  <- 
+  -target([200,0,10]);
+  .wait(5000);
   ?flag(F);
   .goto(F).
-    
-  
 
 +flag_taken: team(100)
   <-

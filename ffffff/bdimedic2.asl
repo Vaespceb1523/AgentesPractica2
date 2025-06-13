@@ -13,19 +13,19 @@
 
 +target_reached(T): patrolling & team(200) 
   <-
-  .print("AMMOPACK!");
-  .reload;
+  .print("MEDPACK!");
+  .cure;
   ?patroll_point(P);
   -+patroll_point(P+1);
   -target_reached(T).
 
-+patroll_point(P): total_control_points(T) & P<T & team(200)
++patroll_point(P): total_control_points(T) & P<T 
   <-
   ?control_points(C);
   .nth(P,C,A);
   .goto(A).
 
-+patroll_point(P): total_control_points(T) & P==T & team(200)
++patroll_point(P): total_control_points(T) & P==T
   <-
   -patroll_point(P);
   +patroll_point(0).
@@ -35,12 +35,12 @@
 
 +flag (F): team(100) 
   <-
-  +target([200,0,10]);
-  .goto([200,0,10]). 
+  +target([10,0,170]);
+  .goto([10,0,170]). 
 
 +target_reached(T): team(100) 
   <- 
-  -target([200,0,10]);
+  -target([10,0,170]);
   .wait(5000);
   ?flag(F);
   .goto(F).
@@ -55,7 +55,7 @@
 
 +heading(H): exploring
   <-
-  .reload;
+  .cure;
   .wait(2000);
   .turn(0.375).
 

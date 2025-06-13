@@ -35,6 +35,14 @@
 
 +flag (F): team(100) 
   <-
+  +target([200,0,10]);
+  .goto([200,0,10]). 
+
++target_reached(T): team(100) 
+  <- 
+  -target([200,0,10]);
+  .wait(5000);
+  ?flag(F);
   .goto(F).
 
 +flag_taken: team(100) 
@@ -54,12 +62,6 @@
 //+heading(H): returning
 //  <-
 //  .print("returning").
-
-+target_reached(T): team(100)
-  <- 
-  .print("target_reached");
-  +exploring;
-  .turn(0.375).
 
 +enemies_in_fov(ID,Type,Angle,Distance,Health,Position)
   <- 
